@@ -1,5 +1,6 @@
-import { drawVenom, updateVenom } from "./venom";
-import { drawBackground } from "./stage.js";
+import { Venom } from "./entities/fighters/Venom.js";
+import { Ryu } from "./entities/fighters/Ryu.js";
+import { Stage } from "./entities/Stage.js";
 
 const GameViewport = {
   WIDTH: 384,
@@ -13,11 +14,17 @@ window.onload = function() {
   canvasEl.width = GameViewport.WIDTH;
   canvasEl.height = GameViewport.HEIGHT;
 
-   function frame() {
-    updateVenom(context);
+  const venom = new Venom(80, 110,1);
+  const ryu = new Ryu(80, 110, -1);
+  const stage = new Stage(); 
 
-    drawBackground(context);
-    drawVenom(context);
+  function frame() {
+    venom.update(context);
+    ryu.update(context);
+
+    stage.draw(context);
+    venom.draw(context);
+    ryu.draw(context);
 
     window.requestAnimationFrame(frame);
   }
