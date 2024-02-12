@@ -3,7 +3,11 @@ export class Stage {
     this.image = document.querySelector('img[alt="background"]');
   }
 
-    draw(context) {
-      context.drawImage(this.image, 0, 0);
-    }
+  update() { }
+
+  draw(context) {
+    context.drawImage(this.image, 0, 0);
+    
+    
+  }
 }
